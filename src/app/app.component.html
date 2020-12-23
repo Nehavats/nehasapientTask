@@ -1,0 +1,109 @@
+
+
+
+
+
+<div class="container">
+  <div>
+    <h2 class="padding_left padding_top_10">SpaceX Launch Program</h2>
+  </div>
+  <section class="row main_section">
+    <div class="col-2 col-s-3 left_section">
+      <div class="year_filter">
+        <h3 class="padding_left ">Filters </h3>
+
+
+
+
+        <div class="text_center">Launch Year</div>
+        <div class="margin_left">
+          <span class="col radio-toolbar" *ngFor="let data of yearArray">
+            <input type="radio" id="{{data}}" name="check" value="{{data}}" (change)="selectFilter(1, data)">
+            <label for="{{data}}">{{data}}</label>
+
+          
+
+          </span>
+        </div>
+      </div>
+
+      <div class="year_filter">
+       
+
+
+
+
+        <div class="text_center">SuccessFul Launch</div>
+        <div class="margin_left">
+          <span class="col radio-toolbar">
+            <input type="radio" id="radioLaunch1" name="radioLaunch" value="true" (change)="selectFilter(2, $event.target.defaultValue)" >
+            <label for="radioLaunch1">True</label>
+
+            <input type="radio" id="radioLaunch" name="radioLaunch" value="false" (change)="selectFilter(2, $event.target.defaultValue)" >
+            <label for="radioLaunch">False</label>
+
+          </span>
+        </div>
+      </div>
+
+      <div class="year_filter">
+     
+
+
+
+        <div class="text_center">SucessFul Landing</div>
+        <div class="margin_left">
+          <span class="col radio-toolbar">
+            <input type="radio" id="landingData1" name="landingData" value="true" (change)="selectFilter(3, $event.target.defaultValue)" >
+            <label for="landingData1">True</label>
+
+            <input type="radio" id="landingData" name="landingData" value="false" (change)="selectFilter(3, $event.target.defaultValue)" >
+            <label for="landingData">False</label>
+
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-10 col-s-9 right_section">
+      <div class="main_content_area">
+        <div class="row">
+          <div class="col-3 col-s-4 card margin_top padding_right" *ngFor="let data of landingData">
+            <div class="card_width">
+              <div class="image_div">
+                <img src="{{data?.links?.mission_patch_small}}" alt="image">
+              </div>
+              <div>
+                <span class="card_name">{{data.mission_name}} # {{data.flight_number}}</span>
+              </div>
+              <div>
+                <div class="bold_class">Mission Ids</div>
+                <ul *ngFor=" let id of data?.mission_id" class="padding_left">
+                  <li class="padding_left">{{id}}</li>
+
+                </ul>
+              </div>
+              <div class="content_div">
+                <span class="bold_class">Launch Year :</span>
+                <span>{{data?.launch_year}}</span>
+              </div>
+              <div class="content_div">
+                <span class="bold_class"> SuccessFul Launch:</span>
+                <span> {{data?.launch_success}}</span>
+              </div>
+              <div class="content_div">
+                <span class="bold_class"> SuccessFul Landing:</span>
+                <span></span>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
